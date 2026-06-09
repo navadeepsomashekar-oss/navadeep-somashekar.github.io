@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Navadeep Somashekar – VLSI Design & Verification Engineer</title>
+<style>
+  :root {
+    --navy: #0D2137;
+    --navy-mid: #1A3A5C;
+    --accent: #00B4D8;
+    --accent2: #0077B6;
+    --text: #E8EDF2;
+    --muted: #8BA3BC;
+    --card: #132840;
+    --card-border: #1E3D5E;
+    --surface: #0A1928;
+    --green: #22D3A0;
+    --ff-display: 'Courier New', Courier, monospace;
+    --ff-body: 'Segoe UI', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--surface);
+    color: var(--text);
+    font-family: var(--ff-body);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: #fff; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13, 33, 55, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--card-border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 56px;
+  }
+  .nav-brand {
+    font-family: var(--ff-display);
+    color: var(--accent);
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+  }
+  .nav-brand span { color: var(--muted); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    color: var(--muted); font-size: 0.85rem; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 2rem 4rem;
+    max-width: 1100px; margin: 0 auto;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: var(--ff-display);
+    font-size: 0.8rem; color: var(--accent);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before { content: "> "; color: var(--green); }
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .hero h1 .hl { color: var(--accent); }
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+  .hero-desc {
+    max-width: 600px;
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent); color: #0D2137;
+  }
+  .btn-primary:hover { background: #fff; color: #0D2137; }
+  .btn-ghost {
+    border: 1px solid var(--card-border); color: var(--text);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* RTL CHIP DECORATION */
+  .chip-row {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .chip {
+    font-family: var(--ff-display);
+    font-size: 0.72rem; letter-spacing: 0.08em;
+    background: rgba(0, 180, 216, 0.08);
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    color: var(--accent);
+    padding: 0.2rem 0.65rem;
+    border-radius: 2px;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 1100px; margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+  .section-label {
+    font-family: var(--ff-display);
+    font-size: 0.75rem; color: var(--accent); letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-size: 2rem; font-weight: 700;
+    color: #fff; margin-bottom: 3rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  /* SKILLS GRID */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.4rem 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+  .skill-card h3 {
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); margin-bottom: 0.75rem; font-family: var(--ff-display);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tag {
+    font-size: 0.78rem; background: rgba(255,255,255,0.06);
+    color: var(--muted); padding: 0.2rem 0.6rem; border-radius: 2px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex; flex-direction: column;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .proj-tag {
+    font-family: var(--ff-display);
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--green); text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .project-card h3 {
+    font-size: 1.05rem; font-weight: 700; color: #fff;
+    margin-bottom: 0.75rem; line-height: 1.4;
+  }
+  .project-card p {
+    color: var(--muted); font-size: 0.9rem;
+    line-height: 1.65; flex: 1;
+  }
+  .proj-metrics {
+    margin-top: 1rem;
+    display: flex; gap: 1.25rem;
+  }
+  .metric {
+    display: flex; flex-direction: column;
+  }
+  .metric-val {
+    font-family: var(--ff-display);
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--accent);
+  }
+  .metric-label { font-size: 0.7rem; color: var(--muted); }
+  .proj-tools {
+    margin-top: 1rem;
+    display: flex; flex-wrap: wrap; gap: 0.3rem;
+  }
+  .proj-tool {
+    font-size: 0.72rem; background: rgba(0,119,182,0.15);
+    border: 1px solid rgba(0,119,182,0.3);
+    color: var(--accent2); padding: 0.15rem 0.55rem; border-radius: 2px;
+  }
+
+  /* EXPERIENCE */
+  .exp-item {
+    border-left: 2px solid var(--card-border);
+    padding-left: 1.75rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .exp-item::before {
+    content: "";
+    position: absolute; left: -5px; top: 6px;
+    width: 8px; height: 8px;
+    background: var(--accent); border-radius: 50%;
+  }
+  .exp-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem;
+  }
+  .exp-org { font-weight: 700; color: #fff; font-size: 1rem; }
+  .exp-role { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .exp-date { font-family: var(--ff-display); font-size: 0.78rem; color: var(--muted); }
+  .exp-item ul { padding-left: 1.2rem; }
+  .exp-item li { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.35rem; }
+
+  /* EDUCATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+  .edu-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 8px; padding: 1.5rem;
+  }
+  .edu-card h3 { color: #fff; font-size: 1rem; margin-bottom: 0.25rem; }
+  .edu-card .deg { color: var(--accent); font-size: 0.88rem; margin-bottom: 0.5rem; }
+  .edu-card .year { font-family: var(--ff-display); color: var(--muted); font-size: 0.78rem; }
+
+  /* CONTACT */
+  .contact-inner {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 3rem;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+  }
+  .contact-inner h2 { font-size: 1.8rem; color: #fff; margin-bottom: 0.75rem; }
+  .contact-inner p { color: var(--muted); max-width: 480px; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+  /* DIVIDER */
+  .divider {
+    border: none; border-top: 1px solid var(--card-border);
+    margin: 0 2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem;
+    color: var(--muted); font-size: 0.8rem;
+    border-top: 1px solid var(--card-border);
+    font-family: var(--ff-display);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--surface); }
+  ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+    section { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand"><span>// </span>navadeep.sv</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">VLSI Design &amp; Verification Engineer</div>
+  <h1>Navadeep<br><span class="hl">Somashekar</span></h1>
+  <p class="hero-subtitle">M.S. Computer Engineering · Texas A&amp;M University</p>
+  <div class="chip-row">
+    <span class="chip">UVM</span>
+    <span class="chip">SystemVerilog</span>
+    <span class="chip">ASIC Verification</span>
+    <span class="chip">RTL Design</span>
+    <span class="chip">Formal Verification</span>
+    <span class="chip">Coverage-Driven Verification</span>
+    <span class="chip">AMBA AXI4</span>
+    <span class="chip">cocotb</span>
+  </div>
+  <p class="hero-desc">
+    VLSI engineer specializing in functional verification and RTL design of complex digital systems. 
+    Experienced in building full UVM environments from scratch, achieving coverage closure on cache coherence 
+    protocols, crossbar fabrics, and bus subsystems. Passionate about open-source verification infrastructure 
+    and making VLSI accessible.
+  </p>
+  <div class="hero-links">
+    <a href="mailto:navadeepsomashekar@gmail.com" class="btn btn-primary">Get In Touch</a>
+    <a href="https://www.linkedin.com/in/navadeep-somashekar" class="btn btn-ghost" target="_blank">LinkedIn</a>
+    <a href="#projects" class="btn btn-ghost">View Projects</a>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// technical_skills</div>
+  <div class="section-title">What I Work With</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Verification</h3>
+      <div class="skill-tags">
+        <span class="tag">UVM</span><span class="tag">OVM</span>
+        <span class="tag">Constrained-Random</span><span class="tag">SVA</span>
+        <span class="tag">Formal Verification</span><span class="tag">CDV</span>
+        <span class="tag">Self-Checking Tests</span><span class="tag">cocotb</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>RTL Design</h3>
+      <div class="skill-tags">
+        <span class="tag">RTL Design</span><span class="tag">Digital IC Design</span>
+        <span class="tag">CMOS Logic</span><span class="tag">DFT</span>
+        <span class="tag">STA</span><span class="tag">CDC Analysis</span>
+        <span class="tag">FPGA Prototyping</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>Protocols &amp; Architecture</h3>
+      <div class="skill-tags">
+        <span class="tag">AMBA AXI4/AHB/APB</span><span class="tag">HyperTransport</span>
+        <span class="tag">MESI Cache Coherence</span><span class="tag">UART</span>
+        <span class="tag">RISC-V</span><span class="tag">SRAM</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>Languages</h3>
+      <div class="skill-tags">
+        <span class="tag">SystemVerilog</span><span class="tag">Verilog</span>
+        <span class="tag">C / C++</span><span class="tag">Python</span>
+        <span class="tag">Perl</span><span class="tag">SystemC</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>EDA Tools</h3>
+      <div class="skill-tags">
+        <span class="tag">Cadence NC-Verilog</span><span class="tag">SimVision</span>
+        <span class="tag">vManager</span><span class="tag">IMC</span>
+        <span class="tag">Innovus</span><span class="tag">Genus</span>
+        <span class="tag">Synopsys VCS</span><span class="tag">Verdi</span>
+        <span class="tag">PrimeTime</span><span class="tag">Vivado</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h3>Certifications</h3>
+      <div class="skill-tags">
+        <span class="tag">SV Design &amp; Verification – Cadence</span>
+        <span class="tag">SV Verification – Entuple</span>
+        <span class="tag">Python – IIT Ropar</span>
+        <span class="tag">Java – IIT Kharagpur</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// projects</div>
+  <div class="section-title">Selected Work</div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="proj-tag">UVM · AXI4 · SystemVerilog</div>
+      <h3>AXI4 Master/Slave UVM Verification Environment</h3>
+      <p>Full UVM testbench for an AXI4 compliant bus subsystem with constrained-random stimulus, inline SVA protocol checkers, and formal verification using Cadence JasperGold.</p>
+      <div class="proj-metrics">
+        <div class="metric"><span class="metric-val">100%</span><span class="metric-label">Func. Coverage</span></div>
+        <div class="metric"><span class="metric-val">96%</span><span class="metric-label">Code Coverage</span></div>
+      </div>
+      <div class="proj-tools">
+        <span class="proj-tool">UVM</span><span class="proj-tool">SVA</span>
+        <span class="proj-tool">JasperGold</span><span class="proj-tool">Cadence SimVision</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-tag">UVM · Cache Coherence · MESI</div>
+      <h3>MESI Cache Coherence Verification (4-Core)</h3>
+      <p>Developed a full test plan and UVM environment for a MESI-based cache coherence controller in a 4-core multiprocessor. Uncovered coherence corner-case bugs with constrained-random and directed testing.</p>
+      <div class="proj-metrics">
+        <div class="metric"><span class="metric-val">97.3%</span><span class="metric-label">Func. Coverage</span></div>
+        <div class="metric"><span class="metric-val">92%</span><span class="metric-label">Code Coverage</span></div>
+      </div>
+      <div class="proj-tools">
+        <span class="proj-tool">UVM</span><span class="proj-tool">vManager</span>
+        <span class="proj-tool">NC-Verilog</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-tag">UVM · HyperTransport · Crossbar</div>
+      <h3>HyperTransport Advanced Crossbar Verification</h3>
+      <p>End-to-end UVM environment for a HyperTransport protocol crossbar switch. Closed coverage through structured regression runs; analyzed results with Cadence IMC and vManager.</p>
+      <div class="proj-metrics">
+        <div class="metric"><span class="metric-val">100%</span><span class="metric-label">Func. Coverage</span></div>
+        <div class="metric"><span class="metric-val">95%</span><span class="metric-label">Code Coverage</span></div>
+      </div>
+      <div class="proj-tools">
+        <span class="proj-tool">UVM</span><span class="proj-tool">IMC</span>
+        <span class="proj-tool">vManager</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-tag">RTL Design · RISC-V · Vivado</div>
+      <h3>RISC-V RV32I 5-Stage Pipelined Processor</h3>
+      <p>Designed a fully pipelined RISC-V RV32I processor in SystemVerilog with hazard detection and forwarding. Verified with 200+ directed test vectors and synthesized on Artix-7 FPGA.</p>
+      <div class="proj-metrics">
+        <div class="metric"><span class="metric-val">200+</span><span class="metric-label">Test Vectors</span></div>
+        <div class="metric"><span class="metric-val">RV32I</span><span class="metric-label">ISA</span></div>
+      </div>
+      <div class="proj-tools">
+        <span class="proj-tool">SystemVerilog</span><span class="proj-tool">Xilinx Vivado</span>
+        <span class="proj-tool">Artix-7</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-tag">Branch Prediction · Computer Architecture</div>
+      <h3>TAGE-PWL Hybrid Branch Predictor</h3>
+      <p>C++ implementation of a hybrid predictor combining TAGE and Piecewise Linear (PWL) schemes with a 3-bit tournament chooser. Benchmarked against SPEC CPU traces.</p>
+      <div class="proj-tools">
+        <span class="proj-tool">C++</span><span class="proj-tool">SPEC CPU Benchmarks</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-tag">RTL Design · UART · SRAM</div>
+      <h3>UART + SRAM System Bus Integration</h3>
+      <p>Designed a 256K SRAM and UART transmitter in Verilog, integrated via a custom system bus. Fully verified and synthesized with timing closure confirmed via static timing analysis.</p>
+      <div class="proj-tools">
+        <span class="proj-tool">Verilog</span><span class="proj-tool">STA</span>
+        <span class="proj-tool">Synthesis</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// experience</div>
+  <div class="section-title">Where I've Worked</div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <span class="exp-org">Community Dreams Foundation</span>
+      <span class="exp-date">2025 – Present</span>
+    </div>
+    <div class="exp-role">Electronics Design Engineer – VLSI Vault</div>
+    <ul>
+      <li>Building an open-source repository of beginner-friendly VLSI projects for the verification community.</li>
+      <li>Developing self-checking testbenches, cocotb environments, SVA assertions, and formal verification flows.</li>
+      <li>Creating coverage-driven regression suites targeting functional and code coverage closure across multiple IP blocks.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">// education</div>
+  <div class="section-title">Academic Background</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <h3>Texas A&amp;M University</h3>
+      <div class="deg">M.S. Computer Engineering</div>
+      <div class="year">2023 – 2025 · College Station, TX</div>
+    </div>
+    <div class="edu-card">
+      <h3>R V College of Engineering</h3>
+      <div class="deg">B.E. Electronics &amp; Communication Engineering</div>
+      <div class="year">2018 – 2022 · Bengaluru, India</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <h2>Let's Connect</h2>
+    <p>Open to ASIC verification, RTL design, and DV engineering roles. Feel free to reach out about opportunities or collaborations.</p>
+    <div class="contact-links">
+      <a href="mailto:navadeepsomashekar@gmail.com" class="btn btn-primary">navadeepsomashekar@gmail.com</a>
+      <a href="https://www.linkedin.com/in/navadeep-somashekar" class="btn btn-ghost" target="_blank">LinkedIn</a>
+      <a href="tel:7373365578" class="btn btn-ghost">(737) 336-5578</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &lt;/navadeep&gt; · Built with SystemVerilog in spirit
+</footer>
+
+</body>
+</html>
